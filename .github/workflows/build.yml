@@ -16,14 +16,15 @@ jobs:
 
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
-        with:
-          rust-version: stable
 
       - name: Install pnpm
         run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Install missing UI deps
+        run: pnpm add @nextui-org/button
 
       - name: Build with Tauri
         run: pnpm tauri build
